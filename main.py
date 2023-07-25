@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from dice import *
+from dice import d4, d8, d10, d12, d20, d100
 
 client = commands.Bot(command_prefix='!',intents=discord.Intents.all())
 
