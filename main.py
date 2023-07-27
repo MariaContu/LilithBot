@@ -35,22 +35,59 @@ async def roll(interaction: discord.Interaction, dado:str):
     if dTipo not in dados_disponiveis: await interaction.response.send_message(f"Dado {dTipo} não está entre os dados disponívels, por favor insira um valor válido.")
     
     resultado = None
+    todos = ""
+    soma = 0
+    maior = 0
     if dTipo == "d4":
-        resultado = d4()
+        for i in range(quantidade):
+            resultado = d4()
+            todos += f"{resultado} "
+            if (resultado>maior): maior = resultado
+            soma += resultado
+            
     elif dTipo == "d6":
-        resultado = d6()
+        for i in range(quantidade):
+            resultado = d6()
+            todos += f"{resultado} "
+            if (resultado>maior): maior = resultado
+            soma += resultado
+            
     elif dTipo == "d8":
-        resultado = d8()
+        for i in range(quantidade):
+            resultado = d8()
+            todos += f"{resultado} "
+            if (resultado>maior): maior = resultado
+            soma += resultado
+        
     elif dTipo == "d10":
-        resultado = d10()
+        for i in range(quantidade):
+            resultado = d10()
+            todos += f"{resultado} "
+            if (resultado>maior): maior = resultado
+            soma += resultado
+        
     elif dTipo == "d12":
-        resultado = d12()
+        for i in range(quantidade):
+            resultado = d12()
+            todos += f"{resultado} "
+            if (resultado>maior): maior = resultado
+            soma += resultado
+        
     elif dTipo == "d20":
-        resultado = d20()
+        for i in range(quantidade):
+            resultado = d20()
+            todos += f"{resultado} "
+            if (resultado>maior): maior = resultado
+            soma += resultado
+        
     elif dTipo == "d100":
-        resultado = d100()
+        for i in range(quantidade):
+            resultado = d100()
+            todos += f"{resultado} "
+            if (resultado>maior): maior = resultado
+            soma += resultado
     
-    await interaction.response.send_message(f"{interaction.user.mention} :game_die: Rolou {quantidade}{dTipo} e tirou {resultado}")
+    await interaction.response.send_message(f"{interaction.user.mention} :game_die: Rolou **{quantidade}{dTipo}**. Os valores foram: {todos}. A **soma** de todos é **{soma}** e o **maior** valor foi **{maior}**")
 
 
 ##    
