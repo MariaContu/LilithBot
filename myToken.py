@@ -1,1 +1,1 @@
-token = 'MTEzMzA0MTAwNDI3MDg1MDE1Mw.GzXdLj.HVGtpY8Ex9heEJ-qh_A216WcQtQyh36H_jNU_g'
+token = 'SeuTokenAqui'
