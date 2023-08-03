@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from dice import d4, d6, d8, d10, d12, d20, d100
 from myToken import token
+from pericias import Pericia, Acrobacia,Adestramento,Artes,Atletismo,Atualidades,Ciencias,Crime,Diplomacia,Enganacao,Fortitude,Furtividade,Iniciativa,Intimidacao,Intuicao,Investigacao,Luta,Medicina,Ocultismo,Percepcao,Pilotagem,Pontaria,Profissao,Reflexos,Religiao,Sobrevivencia,Tatica,Tecnologia,Vontade
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -20,8 +21,6 @@ async def on_ready():
 async def oi(ctx):
     await ctx.send("Oi tudo bem? Sou um bot para rpg :)")
 
-
-testServerId=1133139602992017409  
 
 @client.tree.command(name = "rolar", description="Rolagem de d4, d6, d8, d12, d20 e d100")    
 async def roll(interaction: discord.Interaction, dado:str):  
@@ -89,7 +88,25 @@ async def roll(interaction: discord.Interaction, dado:str):
     
     await interaction.response.send_message(f"{interaction.user.mention} :game_die: Rolou **{quantidade}{dTipo}**. Os valores foram: {todos}. A **soma** de todos é **{soma}** e o **maior** valor foi **{maior}**")
 
-
 ##    
+
+#@client.tree.command(name = "pericias", description="Lista com todas as pericias do sistema do RPG de Ordem Paranormal")
+@client.command()
+async def pericias(ctx):
+    pericias_disponiveis = [
+        Acrobacia,Adestramento,Artes,Atletismo,Atualidades,Ciencias,Crime,Diplomacia,Enganacao,Fortitude,Furtividade,Iniciativa,Intimidacao,Intuicao,Investigacao,Luta,Medicina,Ocultismo,Percepcao,Pilotagem,Pontaria,Profissao,Reflexos,Religiao,Sobrevivencia,Tatica,Tecnologia,Vontade
+    ]
+
+    lista_pericias = "Perícias disponíveis:\n"
+    message = ""
+
+    for pericia in pericias_disponiveis:
+        new_line = f"**{pericia.nome}**: Atributo Base: *{pericia.atriBase}*, Treinada: *{pericia.treinada}*, Tem penalidade de Carga? *{pericia.penalidadeCarga}*, Precisa de KIT? *{pericia.needKit}*\n"
+        if len(message) + len(new_line) > 2000:
+            await ctx.send(message)
+            message = ""
+        message += new_line
+
+    await ctx.send(message)
     
 client.run(token)
