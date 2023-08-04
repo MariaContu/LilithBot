@@ -9,7 +9,7 @@ class Pericia:
         self.needKit=needKit
         
         
-# pericias do sistema
+##### PERICIAS DO SISTEMA DE ORDEM #####
 
 Acrobacia = Pericia("Acrobacia","Agilidade",penalidadeCarga=True)
 Adestramento = Pericia("Adestramento","Presenca",treinada=True)
